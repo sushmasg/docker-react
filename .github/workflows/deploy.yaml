@@ -1,1 +1,30 @@
 
+name: Deploy to production
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  deploy:
+    name: Build image
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+      # Your build steps here
+      
+    - name: Build Docker image
+      run: docker build -t t1 .
+
+      
+    - name: Get GitHub Run ID
+      run: echo "Build ID:$GITHUB_RUN_ID"
+      id: build_id
+      
+    - name: Tag Docker image with build ID
+      run: |
+        docker tag t1 t1:${{ steps.build_id.outputs.build_id }}
