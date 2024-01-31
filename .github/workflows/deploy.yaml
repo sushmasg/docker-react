@@ -33,7 +33,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
 
-    - name: Build, tag, and push image to Amazon ECR repo
+    - name: Build, tag, and push image to Amazon ECR 
       env:
         ECR_REGISTRY: 195747621510.dkr.ecr.ap-south-1.amazonaws.com
         ECR_REPOSITORY: helloworld
