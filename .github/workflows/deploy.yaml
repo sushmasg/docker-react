@@ -1,5 +1,5 @@
 
-name: Deploy to productio
+name: Deploy to production
 
 on:
   push:
