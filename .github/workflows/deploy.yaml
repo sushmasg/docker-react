@@ -43,6 +43,7 @@ jobs:
        
       run: |
         echo "IMAGE_TAG:vicss-${GITHUB_SHA::7}"
+        echo $IMAGE_TAG
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
 
