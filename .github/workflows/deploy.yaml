@@ -40,7 +40,7 @@ jobs:
       env:
         ECR_REGISTRY: 195747621510.dkr.ecr.ap-south-1.amazonaws.com
         ECR_REPOSITORY: helloworld
-        IMAGE_TAG: ${{ github.sha::7 }}
+        IMAGE_TAG: ${{ env.SHORT_SHA }}
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
