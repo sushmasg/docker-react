@@ -32,15 +32,15 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    #- name: Print short Sha ID
-     # run: echo "short_id:vicss-${GITHUB_SHA::7}"
+    - name: Print short Sha ID
+      run: echo "IMAGE_TAG=${GITHUB_SHA::7}"
 
 
     - name: Build, tag, and push image to Amazon ECR 
       env:
         ECR_REGISTRY: 195747621510.dkr.ecr.ap-south-1.amazonaws.com
         ECR_REPOSITORY: helloworld
-        IMAGE_TAG:  '${{ github.sha }}:short'
+       # IMAGE_TAG:  ${{ github.sha }}
        
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:vicss-$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
