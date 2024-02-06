@@ -40,8 +40,9 @@ jobs:
       env:
         ECR_REGISTRY: 195747621510.dkr.ecr.ap-south-1.amazonaws.com
         ECR_REPOSITORY: helloworld
-        IMAGE_TAG: "vicss-${GITHUB_SHA::7}"
+       
       run: |
+        echo "IMAGE_TAG:vicss-${GITHUB_SHA::7}"
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
 
