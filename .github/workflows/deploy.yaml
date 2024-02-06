@@ -40,6 +40,7 @@ jobs:
       env:
         ECR_REGISTRY: 195747621510.dkr.ecr.ap-south-1.amazonaws.com
         ECR_REPOSITORY: helloworld
+        IMAGE_TAG: ${{ github.sha }}
        
       run: |
         echo "IMAGE_TAG:vicss-${GITHUB_SHA::7}"
